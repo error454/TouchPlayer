@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ID=com.wordpress.mobilecoder.touchplayer.service
+
+#remount root using technique that won't cause the random remounting error
+if [ -z "$IPKG_OFFLINE_ROOT" ]; then
+	/usr/sbin/rootfs_open -w
+fi
+
+#remove dbus service file
+/bin/rm -f /var/palm/ls2/services/prv/$ID.service
+/bin/rm -f /var/palm/ls2/services/pub/$ID.service
+
+exit 0

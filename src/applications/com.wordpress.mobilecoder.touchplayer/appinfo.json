@@ -1,0 +1,10 @@
+{
+	"id": "com.wordpress.mobilecoder.touchplayer",
+	"version": "1.0.1",
+	"vendor": "Mobile Coder",
+	"type": "web",
+	"main": "index.html",
+	"title": "TouchPlayer",
+	"icon": "icon.png",
+	"uiRevision":2
+}

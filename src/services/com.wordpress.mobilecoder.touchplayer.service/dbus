@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.wordpress.mobilecoder.touchplayer.service
+Exec=/var/usr/bin/run-homebrew-js-service /media/cryptofs/apps/usr/palm/services/com.wordpress.mobilecoder.touchplayer.service

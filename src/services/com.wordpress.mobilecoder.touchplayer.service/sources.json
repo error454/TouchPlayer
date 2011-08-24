@@ -1,0 +1,15 @@
+[{
+	"library": {
+		"name": "foundations",
+		"version": "1.0"
+	}
+},
+{
+	"source": "ffplayAssistant.js" 
+},
+{
+	"source": "commandline.js"
+},
+{
+	"source": "common.js"
+}]

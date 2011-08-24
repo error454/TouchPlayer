@@ -1,0 +1,15 @@
+{
+"id": "com.wordpress.mobilecoder.touchplayer.service",
+"description": "Service to launch ffplay",
+"services": [ {
+	"name": "com.wordpress.mobilecoder.touchplayer.service",
+	"description": "A service that provides a very simple interface 'play' to FFmpeg's ffplay.  This service allows applications to launch a variety of media formats that are unavailable on webOS.  The source for the included ffplay binary can be found at https://github.com/error454/FFmpeg",
+	"commands": [ 
+	{ 
+		"name": "play", 
+		"assistant": "ffplayAssistant",
+		"public": true
+	}
+	] 
+}]
+}
