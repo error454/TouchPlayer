@@ -5,5 +5,5 @@ Priority: optional
 Architecture: all
 Depends: ca.canucksoftware.js-service-framework
 Maintainer: Zachary Burke
-Description: TouchPlay
-Source: {"Homepage":"http://mobilecoder.wordpress.com","Category":"Services and Plugins","LastUpdated":"1298664399","License":"MIT","Type":"Service","FullDescription":"A video player for the Touchpad that will play virtually any file format.  Because the decoding occurs on the CPU, ultra-high resolution files may play slowly.","PostRemoveFlags":"","PostUpdateFlags":"","Icon":"","Title":"TouchPlayer Service","PostInstallFlags":"RestartLuna"}
+Description: TouchPlayer
+Source: {"Homepage":"http://mobilecoder.wordpress.com","Category":"Multimedia","LastUpdated":"","License":"MIT","Type":"Application","FullDescription":"A video player for the Touchpad that will play virtually any file format.  Because the decoding occurs on the CPU, ultra-high resolution files such as MKVs may play slowly. ","PostRemoveFlags":"","PostUpdateFlags":"","Icon":"icon.png","Title":"TouchPlayer Service","PostInstallFlags":"RestartLuna"}
