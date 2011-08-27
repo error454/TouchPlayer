@@ -2,7 +2,7 @@
 	"id": "com.wordpress.mobilecoder.TouchPlayer",
 	"package_format_version": 2,
 	"loc_name": "Video Player for Touchpad",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"icon": "icon.png",
 	"miniicon": "icon.png",
 	"vendor": "Mobile Coder",

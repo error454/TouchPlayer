@@ -1,0 +1,15 @@
+Version 1.0.3
+<ul>
+	<li>Added About screen</li>
+	<li>Changed SDL initialization method to specify full-screen, this eliminates the sliver of screen that was visible.</li>
+</ul>
+
+Version 1.0.2
+<ul>
+	<li>Updated package dependencies to specify file manager service.</li>
+</ul>
+
+Version 1.0.1
+<ul>
+	<li>Initial Release</li>
+</ul>
