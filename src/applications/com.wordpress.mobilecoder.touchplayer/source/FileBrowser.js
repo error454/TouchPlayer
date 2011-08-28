@@ -69,13 +69,15 @@ enyo.kind({
 				kind: "HFlexBox", align: "center",
 				components: 
 				[
-					{ content: "Non-spec optimize", flex: 1  },
+					{ content: "Visualization", flex: 1  },
 					{
-						kind: "ToggleButton",
-						name: "optimizeToggle",
-						state: false,
-						onLabel: "Yes",
-						offLabel: "No"
+						kind: "ListSelector",
+						name: "visualizationList",
+						items: [
+							{ caption: "Video", value: "video" },
+							{ caption: "Waves", value: "waves" },
+							{ caption: "RDFT", value: "rdft" }
+						]
 					}
 				]
 			},
@@ -87,7 +89,31 @@ enyo.kind({
 				min: "1",
 				max: "10",
 				value: "1"
-			}
+			},
+			/*
+			{
+				kind: "IntegerPicker",
+				name: "subsPicker",
+				className: "picker-hbox",
+				label: "Subtitle Index",
+				min: "0",
+				max: "4",
+				value: "0"
+			},*/
+			{
+				kind: "HFlexBox", align: "center",
+				components: 
+				[
+					{ content: "Flip vertical", flex: 1 },
+					{
+						kind: "ToggleButton",
+						name: "verticalToggle",
+						state: false,
+						onLabel: "Yes",
+						offLabel: "No"
+					}
+				]
+			},
 		]},
 		{kind: "VFlexBox", flex: 5,
 		components: [
@@ -165,6 +191,7 @@ enyo.kind({
 			inSender.setStyle("background-color:#A9F5A9");
 			var item = array[inEvent.rowIndex];
 			if(item.type == "file"){
+			/*
 				//Build up arguments
 				var args = "";
 				if(this.$.audioToggle.getState() == false){
@@ -176,7 +203,25 @@ enyo.kind({
 				if(this.$.threadPicker.getValue() > 1){
 					args += "-threads " + this.$.threadPicker.getValue();
 				}
-				this.$.playFile.call({source: item.value, switches: args});
+				
+				*		source: the absolute path of the file to play
+				* 		visualization: waves, video(default) or rdft
+				*		audio: boolean
+				*		flipVertical: boolean
+				*		threads: integer
+				*		subIndex: integer
+			*/
+				var visArg = this.$.visualizationList.getValue();
+				
+				this.$.playFile.call(
+				{
+					source: item.value, 
+					visualization: visArg,
+					audio: this.$.audioToggle.getState(),
+					flipVertical: this.$.verticalToggle.getState(),
+					threads: this.$.threadPicker.getValue(),
+					subIndex: -1 //this.$.subsPicker.getValue()
+				});
 			}
 			else if(item.type == "dir"){
 				this.navigate(item.value, true);
