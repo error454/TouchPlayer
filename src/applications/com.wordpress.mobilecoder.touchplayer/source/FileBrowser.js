@@ -39,6 +39,12 @@ enyo.kind({
 		  service: "palm://com.wordpress.mobilecoder.touchplayer.service",
 		  method: "play"
 		},
+        {
+		  name: "emergencyKill",
+		  kind: "PalmService",
+		  service: "palm://com.wordpress.mobilecoder.touchplayer.service",
+		  method: "killall"
+		},
 		{kind: "VFlexBox", 
 		components: [
 			{
@@ -65,6 +71,29 @@ enyo.kind({
 					}
 				]
 			},
+            {
+                kind: "HFlexBox", align: "center",
+                    components: 
+                    [
+                        { content: "Font Size", flex: 1  },
+                        {
+                            kind: "ListSelector",
+                            name: "fontList",
+                            items: [
+                                { caption: "14", value: "14" },
+                                { caption: "18", value: "18" },
+                                { caption: "24", value: "24" },
+                                { caption: "28", value: "28" }
+                            ]
+                        }
+                    ]
+            },
+            {
+                kind: "Button",
+                caption: "Emergency Kill",
+                onclick: "killAll"
+            }
+			/*
 			{
 				kind: "HFlexBox", align: "center",
 				components: 
@@ -81,6 +110,8 @@ enyo.kind({
 					}
 				]
 			},
+			*/
+			/*
 			{
 				kind: "IntegerPicker",
 				name: "threadPicker",
@@ -90,6 +121,7 @@ enyo.kind({
 				max: "10",
 				value: "1"
 			},
+			*/
 			/*
 			{
 				kind: "IntegerPicker",
@@ -100,6 +132,7 @@ enyo.kind({
 				max: "4",
 				value: "0"
 			},*/
+			/*
 			{
 				kind: "HFlexBox", align: "center",
 				components: 
@@ -114,6 +147,7 @@ enyo.kind({
 					}
 				]
 			},
+			*/
 		]},
 		{kind: "VFlexBox", flex: 5,
 		components: [
@@ -191,36 +225,15 @@ enyo.kind({
 			inSender.setStyle("background-color:#A9F5A9");
 			var item = array[inEvent.rowIndex];
 			if(item.type == "file"){
-			/*
-				//Build up arguments
-				var args = "";
-				if(this.$.audioToggle.getState() == false){
-					args += "-an ";
-				}
-				if(this.$.optimizeToggle.getState() == true){
-					args += "-fast ";
-				}
-				if(this.$.threadPicker.getValue() > 1){
-					args += "-threads " + this.$.threadPicker.getValue();
-				}
-				
+			/*			
 				*		source: the absolute path of the file to play
-				* 		visualization: waves, video(default) or rdft
 				*		audio: boolean
-				*		flipVertical: boolean
-				*		threads: integer
-				*		subIndex: integer
-			*/
-				var visArg = this.$.visualizationList.getValue();
-				
+			*/				
 				this.$.playFile.call(
 				{
 					source: item.value, 
-					visualization: visArg,
 					audio: this.$.audioToggle.getState(),
-					flipVertical: this.$.verticalToggle.getState(),
-					threads: this.$.threadPicker.getValue(),
-					subIndex: -1 //this.$.subsPicker.getValue()
+					fontsize: this.$.fontList.getValue()
 				});
 			}
 			else if(item.type == "dir"){
@@ -242,5 +255,8 @@ enyo.kind({
 	},
 	deleteSuccess: function(inSender, inIndex){
 		this.navigate(currentDirectory, true);
-	}
+	},
+    killAll: function(inSender){
+        this.$.emergencyKill.call();
+    }
 });

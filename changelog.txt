@@ -1,5 +1,31 @@
+Version 1.0.4
+<ul>
+	<li>NEON accelerated YUV to RGB conversion for YV12 image format</li>
+	<li>Now using GLES2 for video rendering</li>
+	<li>Now using mplayer instead of ffplay</li>
+	<li>Subtitle support (bitmap fonts only for now)</li>
+	<li>On screen display</li>
+	<li>New controls for Play/Pause, Fast forward/Rewind, Toggle Subtitles</li>
+	<ul>
+		<li>1 finger swipe left/right for a short jump</li>
+		<li>2 finger swipe left/right for a long jump</li>
+		<li>Single finger tap to play/pause (automatically pauses in card view)</li>
+		<li>Triple finger slide up to toggle subtitles</li>
+		<li>Triple finger slide down to choose subtitle track</li>
+	</ul>
+	<li>New standardized service calls for anyone that wants to use Touchplayer to launch videos</li>
+</ul>
+
 Version 1.0.3
 <ul>
+	<li>Audio visualization options</li>
+	<li>Flip video vertically</li>
+	<li>New Service Calls</li>
+	<ul>
+		<li>Vertical Screen flip</li>
+		<li>Visualization Options</li>
+		<li>Subtitle streams</li>
+	</ul>
 	<li>Added About screen</li>
 	<li>Changed SDL initialization method to specify full-screen, this eliminates the sliver of screen that was visible.</li>
 </ul>

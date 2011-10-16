@@ -1,15 +1,20 @@
 {
 "id": "com.wordpress.mobilecoder.touchplayer.service",
-"description": "Service to launch ffplay",
+"description": "Service to launch mplayer",
 "services": [ {
 	"name": "com.wordpress.mobilecoder.touchplayer.service",
-	"description": "A service that provides a very simple interface 'play' to FFmpeg's ffplay.  This service allows applications to launch a variety of media formats that are unavailable on webOS.  The source for the included ffplay binary can be found at https://github.com/error454/FFmpeg",
+	"description": "A service that provides an interface mplayer.  This service allows applications to launch a variety of media formats that are unavailable on webOS.  The source for the included mplayer binary can be found at https://github.com/error454/mplayer-webos",
 	"commands": [ 
 	{ 
 		"name": "play", 
 		"assistant": "ffplayAssistant",
 		"public": true
-	}
+	},
+    {
+        "name": "killall",
+        "assistant": "killAssistant",
+        "public": true
+    }
 	] 
 }]
 }
