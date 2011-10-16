@@ -89,6 +89,21 @@ enyo.kind({
                     ]
             },
             {
+                kind: "HFlexBox", align: "center",
+                    components: 
+                    [
+                        { content: "Char Set", flex: 1  },
+                        {
+                            kind: "ListSelector",
+                            name: "charSet",
+                            items: [
+                                { caption: "English", value: "en" },
+                                { caption: "Cyrillic", value: "cy" }
+                            ]
+                        }
+                    ]
+            },
+            {
                 kind: "Button",
                 caption: "Emergency Kill",
                 onclick: "killAll"
@@ -233,7 +248,8 @@ enyo.kind({
 				{
 					source: item.value, 
 					audio: this.$.audioToggle.getState(),
-					fontsize: this.$.fontList.getValue()
+					fontsize: this.$.fontList.getValue(),
+                    charset: this.#.charSet.getValue()
 				});
 			}
 			else if(item.type == "dir"){

@@ -31,12 +31,17 @@ this.$.playFile.call(
 {
 	source: "/media/internal/some/folder/video.mpg", 
 	audio: true,
-	fontsize: 18
+	fontsize: 18,
+    charset: "en" //since v1.0.5
 });
 
 this.$.emergencyKill.call();
 
-Note that font sizes are only available at 14, 18, 24 and 28.
+fontsize parameters:
+14, 18, 24, 28
+
+charset parameters:
+en, cy
 
 License:	MIT 
 Author:		Zachary Burke
