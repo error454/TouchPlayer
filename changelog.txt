@@ -1,3 +1,10 @@
+Version 1.0.5
+<ul>
+	<li>Improvements to back-end mplayer launching</li>
+    <li>Preliminary Cyrillic character support</li>
+    <li>Move subtitles into empty black area if possible</li>
+</ul>
+
 Version 1.0.4
 <ul>
 	<li>NEON accelerated YUV to RGB conversion for YV12 image format</li>

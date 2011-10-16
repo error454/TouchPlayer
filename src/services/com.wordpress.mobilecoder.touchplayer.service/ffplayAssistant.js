@@ -40,7 +40,7 @@ ffplayAssistant.prototype.run = function(future){
 	}
     
 	//Add the standard set of arguments
-	args += "-quiet -lavdopts fast:skiploopfilter=all:threads=2 -cache 8192 -cache-min 0 -vf expand=:-100::2 ";
+	args += "-quiet -lavdopts fast:skiploopfilter=all:threads=2 -cache 8192 -cache-min 0 -vf expand=:-60::2 ";
 	
     if(inArgs.charset != null){
         if(inArgs.charset == "cy"){
