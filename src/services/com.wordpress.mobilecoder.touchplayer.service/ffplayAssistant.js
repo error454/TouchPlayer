@@ -47,7 +47,8 @@ ffplayAssistant.prototype.run = function(future){
             args += "-subcp cp1251 -font fonts/mpfont_cyr/font.desc ";
         }
     }
-    else if(inArgs.charset == null || inArgs.charset == "en"){
+    
+    if(inArgs.charset == null || inArgs.charset == "en"){
         if(inArgs.fontsize != null){
             switch(inArgs.fontsize){
             case 14:
