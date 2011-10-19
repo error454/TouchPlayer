@@ -103,6 +103,20 @@ enyo.kind({
                         }
                     ]
             },
+			{
+                kind: "HFlexBox", align: "center",
+                components: 
+                [
+                    { content: "Move subs to black", flex: 1 },
+                    {
+                        kind: "ToggleButton",
+                        name: "moveSubsToggle",
+                        state: false,
+                        onLabel: "Yes",
+                        offLabel: "No"
+                    }
+                ]
+            },
             {
                 kind: "Button",
                 caption: "Emergency Kill",
@@ -249,7 +263,8 @@ enyo.kind({
                     source: item.value, 
                     audio: this.$.audioToggle.getState(),
                     fontsize: this.$.fontList.getValue(),
-                    charset: this.$.charSet.getValue()
+                    charset: this.$.charSet.getValue(),
+					movesubs: this.$.moveSubsToggle.getState()
                 });
             }
             else if(item.type == "dir"){

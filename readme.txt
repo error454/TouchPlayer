@@ -32,7 +32,8 @@ this.$.playFile.call(
 	source: "/media/internal/some/folder/video.mpg", 
 	audio: true,
 	fontsize: 18,
-    charset: "en" //since v1.0.5
+    charset: "en",	 	//since v1.0.5
+	movesubs: false		//since v1.0.5a
 });
 
 this.$.emergencyKill.call();

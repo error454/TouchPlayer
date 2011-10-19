@@ -15,6 +15,7 @@ var ffplayAssistant = function(){}
 *		audio: boolean
 * 		fontsize: integer
 *       charset: en|cy
+*		movesubs: boolean
 
         User contributes fonts are here:
         http://www.mplayerhq.hu/MPlayer/contrib/fonts/
@@ -40,7 +41,11 @@ ffplayAssistant.prototype.run = function(future){
 	}
     
 	//Add the standard set of arguments
-	args += "-quiet -lavdopts fast:skiploopfilter=all:threads=2 -cache 8192 -cache-min 0 -vf expand=:-60::2 ";
+	args += "-quiet -lavdopts fast:skiploopfilter=all:threads=2 -cache 8192 -cache-min 0 -vf ";
+
+	if(inArgs.movesubs != null && inArgs.movesubs == true){
+		args += "expand=:-60::2 ";
+	}
 	
     if(inArgs.charset != null){
         if(inArgs.charset == "cy"){
