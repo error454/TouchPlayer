@@ -1,8 +1,21 @@
-Version 1.0.5a
+Version 1.0.6 <Proposed>
 <ul>
 	<li><Branched experimental version/li>
 	<li>Add option for subtitle displacement</li>
 	<li>Save GUI settings (drop downs and folder location)</li>
+	<li>Better back end launching</li>
+</ul>
+
+Version 1.0.5b <Proposed>
+<ul>
+	<li>Save GUI settings (drop downs and folder location)</li>
+</ul>
+
+Version 1.0.5a <Proposed>
+<ul>
+	<li><Branched experimental version/li>
+	<li>Add option for subtitle displacement</li>
+	<li>Better back end launching</li>
 </ul>
 
 Version 1.0.5

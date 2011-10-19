@@ -8,6 +8,10 @@ The file browser is nothing special, just a file browser with a couple parameter
 Service:
 The service provides an interface to the mplayer binary and also allows parameter passing.  
 
+Hybrid Service (cexec):
+A c-based service that allows executing files.  I am having issues with the NodeJS equivalent and decided
+to go for the proven method.
+
 *NOTE* The service requires that the mplayer binary is present in its path.  To build mplayer you can use the forked version of mplayer for the Touchpad here:
 https://github.com/error454/mplayer-webos
 
