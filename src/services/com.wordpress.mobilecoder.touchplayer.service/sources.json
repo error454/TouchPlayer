@@ -5,14 +5,17 @@
 	}
 },
 {
+    "source": "includes.js"
+},
+{
 	"source": "ffplayAssistant.js" 
 },
 {
 	"source": "commandline.js"
 },
 {
-	"source": "common.js"
+    "source": "killAssistant.js" 
 },
 {
-    "source": "killAssistant.js" 
+    "source": "permAssistant.js" 
 }]

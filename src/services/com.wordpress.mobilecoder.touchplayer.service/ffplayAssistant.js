@@ -41,10 +41,10 @@ ffplayAssistant.prototype.run = function(future){
 	}
     
 	//Add the standard set of arguments
-	args += "-quiet -lavdopts fast:skiploopfilter=all:threads=2 -cache 8192 -cache-min 0 -vf ";
+	args += "-quiet -lavdopts fast:skiploopfilter=all:threads=2 -cache 8192 -cache-min 0 ";
 
 	if(inArgs.movesubs != null && inArgs.movesubs == true){
-		args += "expand=:-60::2 ";
+		args += "-vf expand=:-100::2 ";
 	}
 	
     if(inArgs.charset != null){
@@ -98,6 +98,7 @@ ffplayAssistant.prototype.run = function(future){
 	}
 	*/
 	
-	var cmd = new CommandLine("./mplayer " + args + " \"" + this.controller.args.source + "\"", future);
+	var cmd = new CommandLine("./mplayer " + args + " \"" + this.controller.args.source + "\"", null);
 	cmd.run();
+    future.result = true;
 }

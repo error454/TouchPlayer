@@ -37,7 +37,8 @@ enyo.kind({
           name: "playFile",
           kind: "PalmService",
           service: "palm://com.wordpress.mobilecoder.touchplayer.service",
-          method: "play"
+          method: "play",
+          onSuccess: "fileStarted"
         },
         {
           name: "emergencyKill",
@@ -207,7 +208,7 @@ enyo.kind({
         currentDirectory = "/media/internal/";
         array = [];
         
-        this.navigate(currentDirectory, true);
+        this.navigate(currentDirectory, true);        
     },
     gotFiles: function(inSender, payload){
         //populate list        
@@ -266,6 +267,7 @@ enyo.kind({
                     charset: this.$.charSet.getValue(),
 					movesubs: this.$.moveSubsToggle.getState()
                 });
+                enyo.scrim.show();
             }
             else if(item.type == "dir"){
                 this.navigate(item.value, true);
@@ -289,5 +291,8 @@ enyo.kind({
     },
     killAll: function(inSender){
         this.$.emergencyKill.call();
+    },
+    fileStarted: function(inSender){
+        enyo.scrim.hide()
     }
 });

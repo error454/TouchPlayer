@@ -15,6 +15,7 @@ var killAssistant = function(){}
 *		no arguments
 */
 killAssistant.prototype.run = function(future){	
-	var cmd = new CommandLine("killall mplayer", future);
+    var cmd = new CommandLine("killall mplayer", future);
 	cmd.run();
+    future.result = "done";
 }
