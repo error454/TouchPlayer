@@ -13,23 +13,18 @@ var ffplayAssistant = function(){}
 *   argument list:
 *		source: the absolute path of the file to play
 *		audio: boolean
-* 		fontsize: integer
-*       charset: en|cy
+*		font: string (case insensitive)
+* 		fontsize: integer (this is a scale factor)
 *		movesubs: boolean
 
-        User contributes fonts are here:
-        http://www.mplayerhq.hu/MPlayer/contrib/fonts/
-        
-        For cryllic fonts: -subcp cp1251
-
+	Possible experimental options
 		-autosync 0 -mc 0 
 		-cache-min 5 
 		-cache 8192 
 		-lavdopts fast:skiploopfilter=all:threads=4 
-		-quiet 
-		-font font-arial-cp1250/font-arial-18-cp1250/font.desc 
 * 		
 */
+
 ffplayAssistant.prototype.run = function(future){
 
 	//Build up ffplay command
@@ -46,57 +41,19 @@ ffplayAssistant.prototype.run = function(future){
 	if(inArgs.movesubs != null && inArgs.movesubs == true){
 		args += "-vf expand=:-100::2 ";
 	}
-	
-    if(inArgs.charset != null){
-        if(inArgs.charset == "cy"){
-            args += "-subcp cp1251 -font fonts/mpfont_cyr/font.desc ";
-        }
-    }
-    
-    if(inArgs.charset == null || inArgs.charset == "en"){
-        if(inArgs.fontsize != null){
-            switch(inArgs.fontsize){
-            case 14:
-                args += "-font fonts/font-arial-14-iso-8859-7/font.desc "
-            break;
-                
-            case 18:
-                args += "-font fonts/font-arial-18-iso-8859-7/font.desc "
-            break;
-            
-            case 24:
-                args += "-font fonts/font-arial-24-iso-8859-7/font.desc "
-            break;
-            
-            case 28:
-                args += "-font fonts/font-arial-28-iso-8859-7/font.desc "
-            break;
-            
-            default:
-                args += "-font fonts/font-arial-18-iso-8859-7/font.desc "
-            }
-        }
-    }
-	/*
-	if(inArgs.threads > 0){
-		args += "-threads " + inArgs.threads + " ";
+
+	if(inArgs.font != null){
+		if(inArgs.font.indexOf(".ttf") == -1){
+			args += "-font \"/usr/share/fonts/" + inArgs.font + ".ttf\" ";
+		}
 	}
-	
-	if(inArgs.visualization == "waves"){
-		args += "-showmode 1 ";
+	else{
+		args += "-font /usr/share/fonts/arial.ttf ";
 	}
-	else if(inArgs.visualization == "rdft"){
-		args += "-showmode 2 ";
+	    
+	if(inArgs.fontsize != null && !isNaN(inArgs.fontsize)){
+        args += "-subfont-text-scale " + inArgs.fontsize + " ";
 	}
-	
-	if(inArgs.flipVertical == true){
-		args += "-vf \"vflip\" ";
-	}
-	
-	if(inArgs.subIndex > 0){
-		args += "-sst " + inArgs.subIndex + " ";
-	}
-	*/
 	
 	var cmd = new CommandLine("./mplayer " + args + " \"" + this.controller.args.source + "\"", null);
 	cmd.run();

@@ -46,6 +46,13 @@ enyo.kind({
           service: "palm://com.wordpress.mobilecoder.touchplayer.service",
           method: "killall"
         },
+		{
+			name: "getFontList",
+			kind: enyo.PalmService,
+			service: "palm://com.wordpress.mobilecoder.touchplayer.service",
+			method: "getfonts",
+			onSuccess: "gotFonts"
+        },
         {kind: "VFlexBox", 
         components: [
             {
@@ -76,15 +83,20 @@ enyo.kind({
                 kind: "HFlexBox", align: "center",
                     components: 
                     [
-                        { content: "Font Size", flex: 1  },
+                        { content: "Font Scale", flex: 1  },
                         {
                             kind: "ListSelector",
                             name: "fontList",
                             items: [
-                                { caption: "14", value: "14" },
-                                { caption: "18", value: "18" },
-                                { caption: "24", value: "24" },
-                                { caption: "28", value: "28" }
+                                { caption: "1x", value: "1" },
+                                { caption: "2x", value: "2" },
+                                { caption: "3x", value: "3" },
+                                { caption: "4x", value: "4" },
+                                { caption: "5x", value: "5" },
+                                { caption: "6x", value: "6" },
+                                { caption: "7x", value: "7" },
+                                { caption: "8x", value: "8" },
+                                { caption: "9x", value: "9" }
                             ]
                         }
                     ]
@@ -93,14 +105,10 @@ enyo.kind({
                 kind: "HFlexBox", align: "center",
                     components: 
                     [
-                        { content: "Char Set", flex: 1  },
+                        { content: "Font", flex: 1  },
                         {
                             kind: "ListSelector",
-                            name: "charSet",
-                            items: [
-                                { caption: "English", value: "en" },
-                                { caption: "Cyrillic", value: "cy" }
-                            ]
+                            name: "fontName",
                         }
                     ]
             },
@@ -205,6 +213,8 @@ enyo.kind({
     create: function() {
         this.inherited(arguments);
         
+		this.$.getFontList.call();
+		
         currentDirectory = "/media/internal/";
         array = [];
         
@@ -255,19 +265,15 @@ enyo.kind({
             inSender.setStyle("background-color:#A9F5A9");
             var item = array[inEvent.rowIndex];
             if(item.type == "file"){
-            /*            
-                *        source: the absolute path of the file to play
-                *        audio: boolean
-            */                
+                enyo.scrim.show();
                 this.$.playFile.call(
                 {
                     source: item.value, 
                     audio: this.$.audioToggle.getState(),
                     fontsize: this.$.fontList.getValue(),
-                    charset: this.$.charSet.getValue(),
+                    font: this.$.fontName.getValue(),
 					movesubs: this.$.moveSubsToggle.getState()
                 });
-                enyo.scrim.show();
             }
             else if(item.type == "dir"){
                 this.navigate(item.value, true);
@@ -293,6 +299,10 @@ enyo.kind({
         this.$.emergencyKill.call();
     },
     fileStarted: function(inSender){
-        enyo.scrim.hide()
-    }
+        enyo.scrim.hide();
+    },
+	gotFonts: function(inSender, inResponse, inRequest){
+		//Populate the font dialog
+        this.$.fontName.setItems(inResponse.reply);		
+	}
 });

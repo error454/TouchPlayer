@@ -46,7 +46,7 @@ enyo.kind({
 		this.$.launchURL.call({target: "http://mobilecoder.wordpress.com/2011/10/16/touchplayer-documentation/"});
 	},
 	hideAbout: function(){
-        if(this.ready){
+        if(this.ready == true){
             this.$.pane1.selectViewByName("fileBrowser");
         }
         else{
@@ -55,6 +55,7 @@ enyo.kind({
 	},
 	showFolders: function(inSender, inResponse, inRequest){
 		this.$.info.setContent("Install check completed: "); 
+        this.$.spinner.hide();
         var status = inResponse.reply;
 		if(status.root && status.mplayer && status.homebrew){
 			this.ready = true;
@@ -76,5 +77,5 @@ enyo.kind({
             
             this.$.failReasons.setContent(reasons);
 		}
-	}	
+	}
 });

@@ -1,9 +1,10 @@
 Version 1.0.5a
 <ul>
 	<li>Branched experimental version</li>
-	<li>Add option for subtitle displacement</li>
 	<li>Added install check</li>
 	<li>Modified back-end launching, hopefully making emergency kill unecessary</li>
+    <li>Now uses TTF fonts, user can choose from fonts installed in /usr/share/fonts/.  This makes old font.desc junk obsolete and should also immediately support all locals</li>
+    <li>Font scaling now works (sizes in the GUI are multipliers not points)</li>
 </ul>
 
 Version 1.0.5

@@ -19,6 +19,11 @@
         "name": "checkperms",
         "assistant": "permAssistant",
         "public": true
+    },
+	{
+        "name": "getfonts",
+        "assistant": "fontAssistant",
+        "public": true
     }
 	] 
 }]
