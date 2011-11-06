@@ -1,10 +1,17 @@
-Version 1.0.5a
+Version 1.0.6<br>
+One cold night in November, I decided to update TouchPlayer to 1.0.6.  Of the many improvements, the install process should be much smoother.  For those that haven't a clue how to install things, at least you will now get verbose output as to what is wrong with your install.<br>
+
+MKV support hasn't really changed, with audio enabled the CPU is still pegged.  I probably won't be researching enhancements to this for awhile.
+
 <ul>
-	<li>Branched experimental version</li>
 	<li>Added install check</li>
 	<li>Modified back-end launching, hopefully making emergency kill unecessary</li>
     <li>Now uses TTF fonts, user can choose from fonts installed in /usr/share/fonts/.  This makes old font.desc junk obsolete and should also immediately support all locals</li>
     <li>Font scaling now works (sizes in the GUI are multipliers not points)</li>
+    <li>New API call for getting list of fonts</li>
+    <li>New API call for validating installation</li>
+    <li>New API parameters for playing videos</li>
+    <li>Updated to latest FFmpeg and mplayer as of 11/5/2011</li>
 </ul>
 
 Version 1.0.5

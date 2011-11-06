@@ -14,7 +14,7 @@ var ffplayAssistant = function(){}
 *		source: the absolute path of the file to play
 *		audio: boolean
 *		font: string (case insensitive)
-* 		fontsize: integer (this is a scale factor)
+* 		fontscale: integer (this is a scale factor)
 *		movesubs: boolean
 
 	Possible experimental options
@@ -51,8 +51,8 @@ ffplayAssistant.prototype.run = function(future){
 		args += "-font /usr/share/fonts/arial.ttf ";
 	}
 	    
-	if(inArgs.fontsize != null && !isNaN(inArgs.fontsize)){
-        args += "-subfont-text-scale " + inArgs.fontsize + " ";
+	if(inArgs.fontscale != null && !isNaN(inArgs.fontscale)){
+        args += "-subfont-text-scale " + inArgs.fontscale + " ";
 	}
 	
 	var cmd = new CommandLine("./mplayer " + args + " \"" + this.controller.args.source + "\"", null);

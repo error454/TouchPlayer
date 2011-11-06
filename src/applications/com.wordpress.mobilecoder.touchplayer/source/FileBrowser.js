@@ -270,7 +270,7 @@ enyo.kind({
                 {
                     source: item.value, 
                     audio: this.$.audioToggle.getState(),
-                    fontsize: this.$.fontList.getValue(),
+                    fontscale: this.$.fontList.getValue(),
                     font: this.$.fontName.getValue(),
 					movesubs: this.$.moveSubsToggle.getState()
                 });

@@ -12,7 +12,12 @@ The service provides an interface to the mplayer binary and also allows paramete
 https://github.com/error454/mplayer-webos
 
 Service Calls:
-There are 2 service calls available, examples of how to call them:
+There are 4 service calls available.
+play
+killall
+checkperms
+getfonts
+
 {
   name: "playFile",
   kind: "PalmService",
@@ -22,13 +27,14 @@ There are 2 service calls available, examples of how to call them:
 
 this.$.playFile.call(
 {
-	source: "/media/internal/some/folder/video.mpg", 
-	audio: boolean,
-	font: string,		//since v1.0.5a see getFontList below (case insensitive)
-	fontsize: integer,
-    charset: "en",	 	//since v1.0.5 --deprecated v1.0.5a
-	movesubs: boolean,	//since v1.0.5a
-	onSuccess: callback //since v1.0.5a
+    source: "/media/internal/some/folder/video.mpg", 
+    audio: boolean,
+    font: string,       //since v1.0.6 see getFontList below (case insensitive)
+    fontsize: integer,  //deprecated v1.0.6
+    fontscale: integer, //since v1.0.6
+    charset: "en",      //since v1.0.5 --deprecated v1.0.6
+    movesubs: boolean,  //since v1.0.6
+    onSuccess: callback //since v1.0.6
 });
 
 {
@@ -40,23 +46,23 @@ this.$.playFile.call(
 this.$.emergencyKill.call();
 
 {
-	name: "getFontList",
-	kind: enyo.PalmService,
-	service: "palm://com.wordpress.mobilecoder.touchplayer.service",
-	method: "getfonts",
-	onSuccess: "gotFonts"
+    name: "getFontList",
+    kind: enyo.PalmService,
+    service: "palm://com.wordpress.mobilecoder.touchplayer.service",
+    method: "getfonts",
+    onSuccess: "gotFonts"
 }
 
 this.$.getFontList.call();
 
 gotFonts: function(inSender, inResponse, inRequest){
-	var fonts = inResponse.reply;
-	for(var i = 0; i < fonts.length; i++){
-		console.log(fonts[i]);
-	}
+    var fonts = inResponse.reply;
+    for(var i = 0; i < fonts.length; i++){
+        console.log(fonts[i]);
+    }
 }
 
-License:	MIT 
-Author:		Zachary Burke
-Twitter: 	@error454
-Website:	http://mobilecoder.wordpress.com
+License:    MIT 
+Author:        Zachary Burke
+Twitter:     @error454
+Website:    http://mobilecoder.wordpress.com

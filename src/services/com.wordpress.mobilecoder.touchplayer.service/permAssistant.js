@@ -30,7 +30,7 @@ permAssistant.prototype.run = function(future){
     
     //Check if mplayer has the correct md5
     var mplayerCmd = new CommandLine("md5sum mplayer | cut -f1 -d' '", function(results) {
-        if(results.stdout == "5fb26c1fbb5359f6f0f1ab5e520d030d\n"){
+        if(results.stdout == "c91c34a5968a77993e1d386e71407a29\n"){
             mplayerGood = true;
             console.log("md5 good");
         }
