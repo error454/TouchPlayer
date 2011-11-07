@@ -6,13 +6,17 @@ SERVICES_PATH=/media/cryptofs/apps/usr/palm/services/$ID
 if [ -z "$IPKG_OFFLINE_ROOT" ]; then
 	/usr/sbin/rootfs_open -w
 fi
-
+		
 #make directories in the rare event they don't exist
 /bin/mkdir -p /var/palm/ls2/services/prv
 /bin/mkdir -p /var/palm/ls2/services/pub
 
+#clean up old bad service files
+/bin/rm /var/palm/ls2/services/prv/$ID*
+/bin/rm /var/palm/ls2/services/pub/$ID*
+
 #copy dbus service file
-/bin/cp -f $SERVICES_PATH/dbus /var/palm/ls2/services/prv/$ID.service
-/bin/cp -f $SERVICES_PATH/dbus /var/palm/ls2/services/pub/$ID.service
+/bin/cp -f $SERVICES_PATH/dbus /var/palm/ls2/services/prv/$ID
+/bin/cp -f $SERVICES_PATH/dbus /var/palm/ls2/services/pub/$ID
 
 exit 0

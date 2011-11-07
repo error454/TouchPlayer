@@ -1,6 +1,6 @@
 {
 	"id": "com.wordpress.mobilecoder.touchplayer",
-	"version": "1.0.6",
+	"version": "1.0.6a",
 	"vendor": "Mobile Coder",
 	"type": "web",
 	"main": "index.html",

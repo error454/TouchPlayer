@@ -8,7 +8,7 @@ if [ -z "$IPKG_OFFLINE_ROOT" ]; then
 fi
 
 #remove dbus service file
-/bin/rm -f /var/palm/ls2/services/prv/$ID.service
-/bin/rm -f /var/palm/ls2/services/pub/$ID.service
+/bin/rm -f /var/palm/ls2/services/prv/$ID
+/bin/rm -f /var/palm/ls2/services/pub/$ID
 
 exit 0
