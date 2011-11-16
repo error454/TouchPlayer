@@ -131,64 +131,9 @@ enyo.kind({
                 caption: "Emergency Kill",
                 onclick: "killAll"
             }
-            /*
-            {
-                kind: "HFlexBox", align: "center",
-                components: 
-                [
-                    { content: "Visualization", flex: 1  },
-                    {
-                        kind: "ListSelector",
-                        name: "visualizationList",
-                        items: [
-                            { caption: "Video", value: "video" },
-                            { caption: "Waves", value: "waves" },
-                            { caption: "RDFT", value: "rdft" }
-                        ]
-                    }
-                ]
-            },
-            */
-            /*
-            {
-                kind: "IntegerPicker",
-                name: "threadPicker",
-                className: "picker-hbox",
-                label: "Threads",
-                min: "1",
-                max: "10",
-                value: "1"
-            },
-            */
-            /*
-            {
-                kind: "IntegerPicker",
-                name: "subsPicker",
-                className: "picker-hbox",
-                label: "Subtitle Index",
-                min: "0",
-                max: "4",
-                value: "0"
-            },*/
-            /*
-            {
-                kind: "HFlexBox", align: "center",
-                components: 
-                [
-                    { content: "Flip vertical", flex: 1 },
-                    {
-                        kind: "ToggleButton",
-                        name: "verticalToggle",
-                        state: false,
-                        onLabel: "Yes",
-                        offLabel: "No"
-                    }
-                ]
-            },
-            */
         ]},
         {kind: "VFlexBox", flex: 5,
-        components: [
+            components: [
             {
                 kind: "PageHeader", 
                 layoutKind: "VFlexLayout",
@@ -196,18 +141,25 @@ enyo.kind({
                 className: "enyo-header-dark",
                 components: [
                     {content: "Current Path"},
-                    {name: "pathText", content: "", className: "enyo-item-secondary"}
+                    {name: "pathText", content: "", className: "enyo-item-secondary"},
                 ]
             },
-            {
-                kind: "VirtualList", name: "list", onSetupRow: "getSearchListItem", flex: 1,
+            {   kind: "VirtualList", name: "list", onSetupRow: "getSearchListItem", flex: 1,
                 components: [
                     {kind: "SwipeableItem", flex: 1, onConfirm: "deleteItem", onclick: "selectItem",
                     components: [
                         {name: "entry"}
                     ]}
-            ]}
-        ]
+                ]
+            },
+            {
+                kind: "HFlexBox", pack: "center", 
+                components: [
+                    {kind: "Input", name: "directStream", flex: 1, hint: "rtsp://yourstream"},
+                    {kind: "Button", caption: "Play", onclick: "playDirect"}
+                ]
+            }            
+            ]
         }
     ],
     create: function() {
@@ -304,5 +256,16 @@ enyo.kind({
 	gotFonts: function(inSender, inResponse, inRequest){
 		//Populate the font dialog
         this.$.fontName.setItems(inResponse.reply);		
-	}
+	},
+    playDirect: function(){
+        this.$.playFile.call(
+        {
+            
+            source: this.$.directStream.getValue(), 
+            audio: this.$.audioToggle.getState(),
+            fontscale: this.$.fontList.getValue(),
+            font: this.$.fontName.getValue(),
+            movesubs: this.$.moveSubsToggle.getState()
+        });
+    }
 });
