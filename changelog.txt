@@ -1,3 +1,10 @@
+Version 1.0.7<br>
+<ul>
+    <li>Added UI field to paste rtsp streams</li>
+    <li>Added scale parameter to the play service call which basically does: args += "-vf scale=:" + inArgs.scale + " ";)</li>
+    <li>Playing a file now automatically kills existing mplayer instances</li>
+</ul>
+
 Version 1.0.6a<br>
 Modified post-install script to attempt to fix install issues.  I was able to reproduce the issue on my device.  I verified that after fixing the files, a simple Luna restart did not resolve the issue but a reboot did.  Therefore, a reboot is now required after install.
 

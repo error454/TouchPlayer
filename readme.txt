@@ -33,8 +33,9 @@ this.$.playFile.call(
     fontsize: integer,  //deprecated v1.0.6
     fontscale: integer, //since v1.0.6
     charset: "en",      //since v1.0.5 --deprecated v1.0.6
-    movesubs: boolean,  //since v1.0.6
+    movesubs: boolean,  //since v1.0.6 moves subs into the black un-used area '-vf expand=:-100::2'
     onSuccess: callback //since v1.0.6
+    scale: integer,     //since v1.0.7 this adds the command line '-vf scale=:integer'
 });
 
 {

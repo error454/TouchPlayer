@@ -11,11 +11,15 @@ var ffplayAssistant = function(){}
 *	service call: 	play
 *	function: 		plays a video using ffplay with the specified options
 *   argument list:
-*		source: the absolute path of the file to play
-*		audio: boolean
-*		font: string (case insensitive)
-* 		fontscale: integer (this is a scale factor)
-*		movesubs: boolean
+    source: "/media/internal/some/folder/video.mpg", 
+    audio: boolean,
+    font: string,       //since v1.0.6 see getFontList below (case insensitive)
+    fontsize: integer,  //deprecated v1.0.6
+    fontscale: integer, //since v1.0.6
+    charset: "en",      //since v1.0.5 --deprecated v1.0.6
+    movesubs: boolean,  //since v1.0.6
+    onSuccess: callback //since v1.0.6
+    scale: integer,     //since v1.0.7
 
 	Possible experimental options
 		-autosync 0 -mc 0 
@@ -55,7 +59,11 @@ ffplayAssistant.prototype.run = function(future){
         args += "-subfont-text-scale " + inArgs.fontscale + " ";
 	}
 	
-	var cmd = new CommandLine("./mplayer " + args + " \"" + this.controller.args.source + "\"", null);
+    if(inArgs.scale != null && !isNaN(inArgs.scale)){
+        args += "-vf scale=:" + inArgs.scale + " ";
+	}
+    
+	var cmd = new CommandLine("killall mplayer;./mplayer " + args + " \"" + this.controller.args.source + "\"", null);
 	cmd.run();
     future.result = true;
 }
